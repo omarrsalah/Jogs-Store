@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "60766006161",
+    "project_id": "jogsjogsjogs-c9597",
+    "storage_bucket": "jogsjogsjogs-c9597.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60766006161:android:992bd176a77b123f720830",
+        "android_client_info": {
+          "package_name": "com.jogzer.ecommerce1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "60766006161-o3m24pnhvhroe46f2isc71e92fm2604g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsjVJLXjf4iKf9upfyYLRSngLeZpyIrK8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "60766006161-o3m24pnhvhroe46f2isc71e92fm2604g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
