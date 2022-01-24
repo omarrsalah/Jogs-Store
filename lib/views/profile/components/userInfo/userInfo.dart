@@ -26,6 +26,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
   String _phoneNumber;
   String _selectedGov;
   String _address;
+  String _img;
   final List<String> _errors = [];
   ButtonState _stateTextWithIcon = ButtonState.idle;
   Future _futureUserInfo;
@@ -67,6 +68,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
               _fullName = gv.UserInfo['Full Name'];
               _phoneNumber = gv.UserInfo['Phone Number'];
               _address = gv.UserInfo['Address'];
+              _img = gv.UserInfo['img'];
               if (snapshot.connectionState == ConnectionState.done) {
                 return SingleChildScrollView(
                   child: Column(
@@ -179,8 +181,8 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
           _formKey.currentState.save();
           try {
             KeyboardUtil.hideKeyboard(context);
-            await user_info_viewModel(uid: _u.uid)
-                .addUserData(_fullName, _phoneNumber, _selectedGov, _address);
+            await user_info_viewModel(uid: _u.uid).addUserData(
+                _fullName, _phoneNumber, _selectedGov, _address, _img);
             setState(() {
               _stateTextWithIcon = ButtonState.success;
             });
