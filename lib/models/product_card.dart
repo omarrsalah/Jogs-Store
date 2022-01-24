@@ -30,12 +30,12 @@ class ProductCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AspectRatio(
-              aspectRatio: 1.02,
+              aspectRatio: 1.3,
               child: Container(
-                padding: EdgeInsets.all(getProportionateScreenWidth(20)),
+                padding: EdgeInsets.all(getProportionateScreenWidth(5)),
                 decoration: BoxDecoration(
                   color: CardBackgroundColor,
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(10),
                 ),
                 child: Hero(
                   tag: UniqueKey(),

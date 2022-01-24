@@ -69,7 +69,7 @@ class _BodyState extends State<Body> {
           children: [
             Flexible(flex: 7, child: ProductImages(product: widget.product)),
             SizedBox(
-              height: getProportionateScreenHeight(15),
+              height: getProportionateScreenHeight(10),
             ),
             Flexible(
               flex: 6,
@@ -235,7 +235,7 @@ class _BodyState extends State<Body> {
               ),
               color: PrimaryColor),
           ButtonState.idle: IconedButton(
-              text: "Connection Lost",
+              text: "The item is not added",
               icon: Icon(
                 Icons.cancel,
                 color: Colors.white,
