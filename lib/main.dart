@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'E-Commerce',
+        title: 'jogs',
         theme: theme(),
         home: SignInScreen(),
         routes: routes,
