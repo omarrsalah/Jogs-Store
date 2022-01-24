@@ -62,26 +62,31 @@ class globalVars with ChangeNotifier {
   Future getAllCategories() async {
     DocumentSnapshot doc = await ClothingInformation.get();
     _categories = List<String>.from(doc.get('Categories'));
-    print(_categories);
+    print("cats are "+_categories.toString());
   }
 
   Future getAllProds() async {
     _AllProds.clear();
     await getAllCategories();
     for (int i = 0; i < _categories.length; i++) {
-      QuerySnapshot qSnapshot =
-          await ClothingInformation.collection(_categories[i]).get();
+      // print(_categories[i]);
+      QuerySnapshot qSnapshot = await ClothingInformation.collection(_categories[i]).get();
+      print("Docs are"+qSnapshot.docs.toString());
       List<Product> catProds = [];
       for (int j = 0; j < qSnapshot.docs.length; j++) {
+        print("id = "+qSnapshot.docs[j].id);
         catProds.add(Product(
             id: qSnapshot.docs[j].id,
             images: qSnapshot.docs[j]['images'],
             colors: qSnapshot.docs[j]['Colors'],
             title: qSnapshot.docs[j]['Title'],
-            price: qSnapshot.docs[j]['Price']));
+            price: qSnapshot.docs[j]['Price'])
+            );
       }
+      print("val are "+catProds.toString());
       _AllProds[_categories[i]] = catProds;
     }
+    print("val prods are "+_AllProds.toString());
     prodsBool(true);
   }
 

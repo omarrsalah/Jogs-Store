@@ -9,8 +9,7 @@ class DetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ProductDetailsArguments args =
-        ModalRoute.of(context).settings.arguments;
+    final ProductDetailsArguments args = ModalRoute.of(context).settings.arguments;
     return Container(
       color: PrimaryLightColor,
       child: SafeArea(

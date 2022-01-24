@@ -62,13 +62,12 @@ class _HomeBodyState extends State<HomeBody> {
                                     options: CarouselOptions(
                                       viewportFraction: 0.9,
                                       autoPlay: true,
-                                      aspectRatio: 1.7,
+                                      aspectRatio: 1.5,
                                       enlargeCenterPage: true,
                                       enlargeStrategy:
                                           CenterPageEnlargeStrategy.height,
                                     ),
-                                    items: gv.imgList
-                                        .map((item) => Container(
+                                    items: gv.imgList.map((item) => Container(
                                               child: Container(
                                                 margin: EdgeInsets.all(7.5),
                                                 child: ClipRRect(
@@ -118,7 +117,8 @@ class _HomeBodyState extends State<HomeBody> {
                                     children: List.generate(
                                         gv.categories.length,
                                         (index) =>
-                                            category(cat: gv.categories[index])),
+                                            category(cat: gv.categories[index])
+                                            ),
                                   ),
                                   SizedBox(
                                       height: getProportionateScreenWidth(30))
