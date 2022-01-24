@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import '../../../../utils/constants.dart';
 import '../../../../view_models/globalVariables_viewModel.dart';
 import '../../../../utils/size_config.dart';
@@ -11,6 +13,10 @@ import 'package:ecommerce_app/utils/form_error.dart';
 import 'package:progress_state_button/iconed_button.dart';
 import 'package:progress_state_button/progress_button.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+
+import '../../profile_screen.dart';
 
 class UserInfoScreen extends StatefulWidget {
   static String routeName = "/userInfo";
@@ -19,6 +25,9 @@ class UserInfoScreen extends StatefulWidget {
 }
 
 class _UserInfoScreenState extends State<UserInfoScreen> {
+  final picker = ImagePicker();
+  FirebaseStorage _storage = FirebaseStorage.instance;
+
   final _formKey = GlobalKey<FormState>();
   User _u;
   String _email;
@@ -27,9 +36,38 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
   String _selectedGov;
   String _address;
   String _img;
+
+  String url;
+
   final List<String> _errors = [];
   ButtonState _stateTextWithIcon = ButtonState.idle;
   Future _futureUserInfo;
+
+  TextEditingController imageController = TextEditingController();
+
+  Future<Uri> uploadPic({ImageSource imageSource}) async {
+    File _imageFile;
+
+    final pickedFile = await picker.pickImage(source: imageSource);
+
+    setState(() {
+      _imageFile = File(pickedFile.path);
+    });
+
+    Reference reference =
+        _storage.ref().child("profile/image" + DateTime.now().toString());
+
+    UploadTask uploadTask = reference.putFile(_imageFile);
+
+    uploadTask.whenComplete(() async {
+      _img = await reference.getDownloadURL();
+      url = await reference.getDownloadURL();
+      imageController.text = await reference.getDownloadURL();
+
+      print("url is $_img");
+    });
+    return null;
+  }
 
   @override
   void initState() {
@@ -133,6 +171,17 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                                     SizedBox(
                                         height:
                                             getProportionateScreenHeight(20)),
+                                    ProfButton("Upload Image",
+                                        Icons.library_add_check_outlined, () {
+                                      uploadPic(
+                                          imageSource: ImageSource.gallery);
+                                      // Navigator.pushNamed(
+                                      //         context, UserInfoScreen.routeName)
+                                      //     .then((_) => setState(() {}));
+                                    }),
+                                    SizedBox(
+                                        height:
+                                            getProportionateScreenHeight(20)),
                                     FormError(errors: _errors),
                                     SizedBox(
                                         height:
@@ -182,7 +231,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
           try {
             KeyboardUtil.hideKeyboard(context);
             await user_info_viewModel(uid: _u.uid).addUserData(
-                _fullName, _phoneNumber, _selectedGov, _address, _img);
+                _fullName, _phoneNumber, _selectedGov, _address, url);
             setState(() {
               _stateTextWithIcon = ButtonState.success;
             });
@@ -249,16 +298,16 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
               icon: Icon(Icons.cancel, color: Colors.white),
               color: PrimaryColor),
           ButtonState.success: IconedButton(
-              text: "applied successfully",
+              text: "Applied Successfully",
               icon: Icon(
                 Icons.check_circle,
                 color: Colors.white,
               ),
               color: Colors.green.shade400),
           ButtonState.idle: IconedButton(
-              text: "Connection Lost",
+              text: "Apply",
               icon: Icon(
-                Icons.cancel,
+                Icons.check,
                 color: Colors.white,
               ),
               color: PrimaryColor)

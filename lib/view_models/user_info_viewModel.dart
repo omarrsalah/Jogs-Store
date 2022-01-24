@@ -10,8 +10,7 @@ class user_info_viewModel {
   final CollectionReference Orders =
       FirebaseFirestore.instance.collection('Orders');
 
-  Future addUserData(String fullName, String phoneNumber, String governorate,
-      String address, String img) async {
+  Future addUserData(String fullName, String phoneNumber, String governorate,String address, String img) async {
     return await UsersInformation.doc(uid).set({
       'Full Name': fullName,
       'Phone Number': phoneNumber,
