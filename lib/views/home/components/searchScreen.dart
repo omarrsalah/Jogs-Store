@@ -46,7 +46,7 @@ class SearchScreen extends StatelessWidget {
             ? GridView.count(
                 padding: EdgeInsets.all(getProportionateScreenWidth(25)),
                 childAspectRatio:
-                    Theme.of(context).platform == TargetPlatform.iOS
+                    Theme.of(context).platform == TargetPlatform.android
                         ? MediaQuery.of(context).size.width /
                             (MediaQuery.of(context).size.height / 1.5)
                         : MediaQuery.of(context).size.width /
