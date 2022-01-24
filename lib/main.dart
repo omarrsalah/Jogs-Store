@@ -33,9 +33,9 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'E-Commerce',
+        title: 'Jogs Store',
         theme: theme(),
-        home: SignInScreen(),
+        home: HomeScreen(),
         routes: routes,
       ),
     );
