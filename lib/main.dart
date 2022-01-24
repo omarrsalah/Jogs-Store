@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Jogs Store',
         theme: theme(),
-        home: HomeScreen(),
+        home: SignInScreen(),
         routes: routes,
       ),
     );
