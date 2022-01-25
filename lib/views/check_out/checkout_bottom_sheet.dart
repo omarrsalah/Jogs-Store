@@ -125,15 +125,7 @@ class _checkoutBottomSheetState extends State<checkoutBottomSheet> {
                 color: Colors.white,
               ),
               color: Colors.green.shade400),
-          // ignore: equal_keys_in_map
-          ButtonState.idle: IconedButton(
-              text: "Choose payment method",
-              icon: Icon(
-                Icons.cancel,
-                color: Colors.white,
-              ),
-              color: PrimaryColor),
-        },
+         },
         onPressed: () => onPressedIconWithText(gv, u),
         state: stateTextWithIcon);
   }
