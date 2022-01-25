@@ -210,7 +210,6 @@ class _checkoutBottomSheetState extends State<checkoutBottomSheet> {
                       color: Color(0xFFE2E2E2),
                     ),
                     InkWell(
-                      enableFeedback: true,
                       onTap: () {
                         setState(() {
                           gv.changePaymentMethod("Credit/Debit Card");
